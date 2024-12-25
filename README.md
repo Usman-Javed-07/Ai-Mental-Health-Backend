@@ -24,9 +24,10 @@
     . password : Mentalhealth1122
     . username : usmanjaved0816
 
-=> .env file
 
-    MONGO_URI=mongodb+srv://usmanjaved0816:Mentalhealh1122@cluster0.sherm.mongodb.net/<db_name>?retryWrites=true&w=majority
+=> .env file  => this is the project main file which connected to your database and your localhost port 
+=> keep in mind this is the main file do not share this to anyone not in your git-hub and also keep in mind this well not work because this is coonected to my database if you want to connect to your database make mongodb account and create new cluster give api address 0000 and create drive that give you username and password after that you well be able to connect to database
+
+    MONGO_URI=mongodb+srv://username:password@cluster0.sherm.mongodb.net/yourDatabaseName?retryWrites=true&w=majority
     JWT_SECRET=your_secret_key
-
-# Ai-Mental-Health-Backend
+    PORT=5000
