@@ -1,5 +1,5 @@
  => Backend Setup
-    1) npm in -y 
+    1) npm init -y 
     2) npm install express
     3) npm install dotenv
     4) npm install nodemon
@@ -15,7 +15,7 @@
     |__ config              # Database Connection   
     ├── .env                # Environment variables
     ├── package.json        # Project dependencies
-    ├── index.js           # Main server file
+    ├── index.js            # Main server file
     ├── routes/             # Folder for route files
     ├── controllers/        # Folder for business logic
     └── models/             # Folder for database models

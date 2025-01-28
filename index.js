@@ -22,7 +22,7 @@ mongoose
 // Routes
 app.use("/api/users", userRoutes);
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {
   const env = process.env.NODE_ENV || "development";
   console.log(`Server running in ${env} mode on http://localhost:${PORT}`);
