@@ -9,6 +9,7 @@
     8) npm install jsonwebtoken
     9) npm install mongoose
     10) npm install sequelize
+    11) npm install multer
 
 => Folder Structure   
         
