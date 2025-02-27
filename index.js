@@ -4,6 +4,7 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const userRoutes = require("./routes/userRoute");
 const musicRoutes = require("./routes/musicRoutes");
+const chatRoutes = require("./routes/chatRoutes");
 const path = require("path");
 
 require("dotenv").config();
@@ -28,6 +29,7 @@ app.use("/uploads/music", express.static(path.join(__dirname, "uploads/music")))
 // Routes
 app.use("/api/users", userRoutes);
 app.use("/api/music", musicRoutes);
+app.use("/api", chatRoutes);
 
 // All routes available 
 console.log("Available Routes:");
