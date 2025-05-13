@@ -6,6 +6,7 @@ const userRoutes = require("./routes/userRoute");
 const musicRoutes = require("./routes/musicRoutes");
 const chatRoutes = require("./routes/chatRoutes");
 const videoRoutes = require("./routes/videoRoutes");
+const articleRoutes = require("./routes/articleRoutes");
 
 const path = require("path");
 
@@ -34,6 +35,8 @@ app.use("/api/users", userRoutes);
 app.use("/api/music", musicRoutes);
 app.use("/api", chatRoutes);
 app.use("/api/video", videoRoutes);
+app.use("/api/articles", articleRoutes);
+
 
 // All routes available 
 console.log("Available Routes:");
