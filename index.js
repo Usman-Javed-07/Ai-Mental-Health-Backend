@@ -5,6 +5,8 @@ const mongoose = require("mongoose");
 const userRoutes = require("./routes/userRoute");
 const musicRoutes = require("./routes/musicRoutes");
 const chatRoutes = require("./routes/chatRoutes");
+const videoRoutes = require("./routes/videoRoutes");
+
 const path = require("path");
 
 require("dotenv").config();
@@ -25,11 +27,13 @@ mongoose
 // Serve uploaded files as static assets
 app.use("/uploads/images", express.static(path.join(__dirname, "uploads/images")));
 app.use("/uploads/music", express.static(path.join(__dirname, "uploads/music")));
+app.use("/uploads/videos", express.static(path.join(__dirname, "uploads/videos")));
 
-// Routes
+
 app.use("/api/users", userRoutes);
 app.use("/api/music", musicRoutes);
 app.use("/api", chatRoutes);
+app.use("/api/video", videoRoutes);
 
 // All routes available 
 console.log("Available Routes:");
