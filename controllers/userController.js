@@ -5,7 +5,7 @@ const User = require("../models/userModel");
 
 // Signup Function
 const signup = async (req, res) => {
-  const { username, email, password, FirstName, LastName } = req.body;
+  const { username, email, password, FirstName, LastName,role } = req.body;
 
   try {
     if (!username || !email || !password || !FirstName || !LastName) {
@@ -28,7 +28,8 @@ const signup = async (req, res) => {
       email,
       password: hashedPassword,
       FirstName,  
-      LastName    
+      LastName,
+      role: role || "user",    
     });
 
     await newUser.save();
@@ -54,24 +55,24 @@ const signup = async (req, res) => {
 
 // Login Function
 const login = async (req, res) => {
-  const { email, password } = req.body; 
+  const { email, password } = req.body;
 
   try {
     if (!email || !password) {
       return res.status(400).json({ message: "All fields are required" });
     }
 
-    // Find the user by email 
-    const user = await User.findOne({ email }); 
+    // Find the user by email
+    const user = await User.findOne({ email });
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }
 
-    console.log("Stored Hashed Password:", user.password); 
+    console.log("Stored Hashed Password:", user.password);
 
     // Compare the provided password with the stored hashed password
     const isMatch = await bcrypt.compare(password, user.password);
-    console.log("Password Match:", isMatch); 
+    console.log("Password Match:", isMatch);
 
     if (!isMatch) {
       return res.status(401).json({ message: "Invalid password" });
@@ -82,14 +83,15 @@ const login = async (req, res) => {
       expiresIn: "1h",
     });
 
+    // Send the entire user object along with token
     res.json({
       message: "Login successful",
-      email: user.email, // Return the email of the user
-      token,
+      user: { ...user.toObject(), token }, // Include user details
     });
   } catch (err) {
     res.status(500).json({ message: "Error processing request", error: err.message });
   }
 };
+
 
 module.exports = { signup, login };
