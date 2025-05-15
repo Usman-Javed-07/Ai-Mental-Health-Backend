@@ -8,7 +8,6 @@ const router = express.Router();
 router.post("/signup", signup);
 router.post("/login", login);
 
-// Public route to fetch all users
 router.get("/", async (req, res) => {
   try {
     const users = await User.find();
@@ -19,7 +18,6 @@ router.get("/", async (req, res) => {
   }
 });
 
-// Protected route examples
 router.get("/admin/dashboard", requireRole("admin"), (req, res) => {
   res.json({ message: "Welcome to the Admin Dashboard" });
 });

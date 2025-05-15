@@ -16,7 +16,6 @@ const uploadVideo = multer({
   storage: videoStorage,
 }).fields([{ name: "video", maxCount: 1 }]);
 
-// Test route
 router.get("/test", (req, res) => {
   res.send("Video route is working");
 });

@@ -26,27 +26,41 @@ mongoose
   .catch((err) => console.error("Error connecting to MongoDB:", err));
 
 // Serve uploaded files as static assets
-app.use("/uploads/images", express.static(path.join(__dirname, "uploads/images")));
-app.use("/uploads/music", express.static(path.join(__dirname, "uploads/music")));
-app.use("/uploads/videos", express.static(path.join(__dirname, "uploads/videos")));
-
-
+app.use(
+  "/uploads/images",
+  express.static(path.join(__dirname, "uploads/images"))
+);
+app.use(
+  "/uploads/music",
+  express.static(path.join(__dirname, "uploads/music"))
+);
+app.use(
+  "/uploads/videos",
+  express.static(path.join(__dirname, "uploads/videos"))
+);
 app.use("/api/users", userRoutes);
 app.use("/api/music", musicRoutes);
 app.use("/api", chatRoutes);
 app.use("/api/video", videoRoutes);
 app.use("/api/articles", articleRoutes);
 
-
-// All routes available 
+// All routes available
 console.log("Available Routes:");
 app._router.stack.forEach((middleware) => {
-  if (middleware.route) { 
-    console.log(`${Object.keys(middleware.route.methods)[0].toUpperCase()} ${middleware.route.path}`);
-  } else if (middleware.name === "router") { 
+  if (middleware.route) {
+    console.log(
+      `${Object.keys(middleware.route.methods)[0].toUpperCase()} ${
+        middleware.route.path
+      }`
+    );
+  } else if (middleware.name === "router") {
     middleware.handle.stack.forEach((subMiddleware) => {
       if (subMiddleware.route) {
-        console.log(`${Object.keys(subMiddleware.route.methods)[0].toUpperCase()} ${middleware.regexp} ${subMiddleware.route.path}`);
+        console.log(
+          `${Object.keys(subMiddleware.route.methods)[0].toUpperCase()} ${
+            middleware.regexp
+          } ${subMiddleware.route.path}`
+        );
       }
     });
   }

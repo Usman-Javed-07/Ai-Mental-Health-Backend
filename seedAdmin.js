@@ -1,11 +1,11 @@
-const mongoose = require('mongoose');
-const bcrypt = require('bcryptjs');
-const User = require('./models/userModel'); // Adjust the path if needed
+const mongoose = require("mongoose");
+const bcrypt = require("bcryptjs");
+const User = require("./models/userModel");
 
-// ✅ Use your actual live MongoDB connection string here
-mongoose.connect('mongodb+srv://usmanjaved0816:Mentalhealh1122@cluster0.sherm.mongodb.net/MentalHealth?retryWrites=true&w=majority', {
-
-});
+mongoose.connect(
+  "mongodb+srv://usmanjaved0816:Mentalhealh1122@cluster0.sherm.mongodb.net/MentalHealth?retryWrites=true&w=majority",
+  {}
+);
 
 const admins = [
   {
@@ -14,7 +14,7 @@ const admins = [
     username: "usmanadmin",
     email: "usmanjaved0816@gmail.com",
     password: "Usman*0#11",
-    role: "admin"
+    role: "admin",
   },
   {
     FirstName: "Admin",
@@ -22,7 +22,7 @@ const admins = [
     username: "admin2",
     email: "admin2@example.com",
     password: "admin123",
-    role: "admin"
+    role: "admin",
   },
   {
     FirstName: "Admin",
@@ -30,8 +30,8 @@ const admins = [
     username: "admin3",
     email: "admin3@example.com",
     password: "admin123",
-    role: "admin"
-  }
+    role: "admin",
+  },
 ];
 
 const createAdmins = async () => {
@@ -55,6 +55,5 @@ const createAdmins = async () => {
 };
 
 createAdmins();
-
 
 // node seedAdmin.js

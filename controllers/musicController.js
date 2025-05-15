@@ -4,7 +4,9 @@ const addMusic = async (req, res) => {
   try {
     const { name } = req.body;
     if (!req.files || !req.files.image || !req.files.audio) {
-      return res.status(400).json({ message: "Both image and audio files are required" });
+      return res
+        .status(400)
+        .json({ message: "Both image and audio files are required" });
     }
 
     const imageUrl = `/uploads/images/${req.files.image[0].filename}`;
@@ -17,7 +19,9 @@ const addMusic = async (req, res) => {
     });
 
     await newMusic.save();
-    res.status(201).json({ message: "Music uploaded successfully", music: newMusic });
+    res
+      .status(201)
+      .json({ message: "Music uploaded successfully", music: newMusic });
   } catch (error) {
     console.error("Error uploading music:", error);
     res.status(500).json({ message: "Server error" });

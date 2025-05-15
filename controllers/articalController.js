@@ -5,13 +5,17 @@ const addArticle = async (req, res) => {
     const { title, content, category } = req.body;
 
     if (!title || !content) {
-      return res.status(400).json({ message: "Title and content are required" });
+      return res
+        .status(400)
+        .json({ message: "Title and content are required" });
     }
 
     const newArticle = new Article({ title, content, category });
     await newArticle.save();
 
-    res.status(201).json({ message: "Article added successfully", article: newArticle });
+    res
+      .status(201)
+      .json({ message: "Article added successfully", article: newArticle });
   } catch (error) {
     console.error("Add Article Error:", error);
     res.status(500).json({ message: "Server error" });

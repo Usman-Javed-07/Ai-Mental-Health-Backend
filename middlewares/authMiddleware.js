@@ -13,11 +13,12 @@ const requireRole = (role) => {
     try {
       const decoded = jwt.verify(token, process.env.JWT_SECRET);
       if (decoded.role !== role) {
-  return res.status(403).json({ message: "Forbidden: Insufficient rights" });
-}
-req.user = decoded;
-next();
-
+        return res
+          .status(403)
+          .json({ message: "Forbidden: Insufficient rights" });
+      }
+      req.user = decoded;
+      next();
     } catch (err) {
       return res.status(401).json({ message: "Invalid token" });
     }
